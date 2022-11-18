@@ -34,7 +34,7 @@ ENV MINIT_MAIN_NAME     demo-env-main
 ENV MINIT_MAIN_GROUP    demo-main
 ENV MINIT_MAIN_KIND     cron
 ENV MINIT_MAIN_CRON     "@every 5s"
-ENV MINIT_MAIN_CHARSET  gbk18030
+ENV MINIT_MAIN_CHARSET  gbk
 
 ENV MINIT_DISABLE @demo-daemon-a,demo-daemon-b-2
 
