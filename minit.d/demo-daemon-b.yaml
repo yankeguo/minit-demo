@@ -10,6 +10,7 @@ command:
 kind: daemon
 name: demo-daemon-b-2
 group: demo-daemon-b
+count: 3
 charset: gbk
 shell: /bin/bash -eux
 command:

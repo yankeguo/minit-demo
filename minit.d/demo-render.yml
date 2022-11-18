@@ -1,0 +1,11 @@
+kind: render
+name: demo-render-a
+files:
+  - /opt/templates/a/a-1.txt
+  - /opt/templates/a/a-2.txt
+---
+kind: render
+name: demo-render-b
+raw: true
+files:
+  - /opt/templates/b/*.txt

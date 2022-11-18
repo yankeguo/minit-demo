@@ -1,4 +1,4 @@
-FROM ghcr.io/guoyk93/minit:1.8.0-rc1 AS minit
+FROM ghcr.io/guoyk93/minit:1.8.0-rc2 AS minit
 
 FROM golang:1.19 AS minit-demo
 ENV CGO_ENABLED 0
@@ -27,6 +27,7 @@ COPY --from=minit-demo /minit-demo /minit-demo
 
 ADD bin     /opt/bin
 ADD minit.d /etc/minit.d
+ADD templates /opt/templates
 
 ENV MINIT_MAIN          demo-env-main arg1 arg2
 ENV MINIT_MAIN_DIR      /tmp
