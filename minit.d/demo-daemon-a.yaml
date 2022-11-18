@@ -3,11 +3,13 @@ name: demo-daemon-a-1
 group: demo-daemon-a
 command:
   - /minit-demo
-  - -name demo-daemon-a-1
+  - -name
+  - demo-daemon-a-1
 ---
 kind: daemon
 name: demo-daemon-a-2
 group: demo-daemon-a
 command:
   - /minit-demo
-  - -name demo-daemon-a-2
+  - -name
+  - demo-daemon-a-2

@@ -3,11 +3,14 @@ name: demo-daemon-b-1
 group: demo-daemon-b
 command:
   - /minit-demo
-  - -name demo-daemon-b-1
+  - -name
+  - demo-daemon-b-1
+  - $TZ
 ---
 kind: daemon
 name: demo-daemon-b-2
 group: demo-daemon-b
+charset: gbk
+shell: /bin/bash -eux
 command:
-  - /minit-demo
-  - -name demo-daemon-b-2
+  - /minit-demo -gbk -name demo-daemon-b-2 $TZ

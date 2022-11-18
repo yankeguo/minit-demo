@@ -74,9 +74,7 @@ func main() {
 
 	LOG.Println("cwd:", wd)
 	LOG.Println("args:", strings.Join(os.Args, ", "))
-	for _, item := range os.Environ() {
-		LOG.Println("env:", item)
-	}
+	LOG.Println("envs:", strings.Join(os.Environ(), ", "))
 
 	if optOnce {
 		LOG.Println("test message")
