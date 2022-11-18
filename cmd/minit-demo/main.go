@@ -3,9 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
+	"golang.org/x/text/encoding"
 	"golang.org/x/text/encoding/simplifiedchinese"
-	"io"
-	"log"
 	"os"
 	"os/signal"
 	"strings"
@@ -14,22 +13,28 @@ import (
 )
 
 type Logger struct {
-	*os.File
-	*log.Logger
+	pfx string
+	enc *encoding.Encoder
 }
 
-func createLogger(gbk bool, name string) *Logger {
-	var out io.Writer
+func (l *Logger) Println(items ...any) {
+	buf := []byte(l.pfx + fmt.Sprintln(items...))
+	if l.enc != nil {
+		buf, _ = l.enc.Bytes(buf)
+	}
+	os.Stdout.Write(buf)
+	os.Stdout.Sync()
+}
 
+func newLogger(gbk bool, name string) *Logger {
+	l := &Logger{}
+	if name != "" {
+		l.pfx = "[" + name + "] "
+	}
 	if gbk {
-		out = os.Stdout
-	} else {
-		out = simplifiedchinese.GBK.NewEncoder().Writer(os.Stdout)
+		l.enc = simplifiedchinese.GBK.NewEncoder()
 	}
-	return &Logger{
-		File:   os.Stdout,
-		Logger: log.New(out, "["+name+"] ", log.LstdFlags),
-	}
+	return l
 }
 
 func main() {
@@ -44,16 +49,15 @@ func main() {
 	flag.BoolVar(&optOnce, "once", false, "set once")
 	flag.Parse()
 
-	LOG := createLogger(optGBK, optName)
+	LOG := newLogger(optGBK, optName)
 
 	var err error
 	defer func() {
 		if err == nil {
-			LOG.Println("exiting")
+			LOG.Println("退出")
 		} else {
-			LOG.Println("exited with error:", err.Error())
+			LOG.Println("错误退出:", err.Error())
 		}
-		_ = LOG.Sync()
 		if err != nil {
 			os.Exit(1)
 		}
