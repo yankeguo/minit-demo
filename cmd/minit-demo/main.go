@@ -72,12 +72,12 @@ func main() {
 		return
 	}
 
-	LOG.Println("cwd:", wd)
-	LOG.Println("args:", strings.Join(os.Args, ", "))
-	LOG.Println("envs:", strings.Join(os.Environ(), ", "))
+	LOG.Println("工作目录:", wd)
+	LOG.Println("启动参数:", strings.Join(os.Args, ", "))
+	LOG.Println("环境变量:", strings.Join(os.Environ(), ", "))
 
 	if optOnce {
-		LOG.Println("test message")
+		LOG.Println("测试消息")
 		time.Sleep(time.Second * 5)
 	} else {
 		chSig := make(chan os.Signal, 1)
@@ -86,9 +86,9 @@ func main() {
 		for {
 			select {
 			case t := <-tick.C:
-				LOG.Println("tick:", t.String())
+				LOG.Println("嘀嗒:", t.String())
 			case sig := <-chSig:
-				LOG.Println("signal:", sig.String())
+				LOG.Println("信号:", sig.String())
 				time.Sleep(time.Second * 3)
 				return
 			}
