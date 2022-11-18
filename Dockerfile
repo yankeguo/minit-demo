@@ -36,6 +36,8 @@ ENV MINIT_MAIN_KIND     cron
 ENV MINIT_MAIN_CRON     "@every 5s"
 ENV MINIT_MAIN_CHARSET  gbk18030
 
+ENV MINIT_DISABLE @demo-daemon-a,demo-daemon-b-2
+
 ENTRYPOINT [ "/minit" ]
 
 CMD ["demo-arg-main", "arg1", "arg2"]
