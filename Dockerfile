@@ -4,7 +4,7 @@ FROM golang:1.19 AS minit-demo
 ENV CGO_ENABLED 0
 WORKDIR /go/src/app
 ADD . .
-RUN go build -o /minit-demo
+RUN go build -o ./cmd/minit-demo /minit-demo
 
 
 FROM alpine:3.16
