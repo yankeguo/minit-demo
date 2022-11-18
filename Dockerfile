@@ -25,6 +25,7 @@ ENV PATH "/opt/bin:${PATH}"
 COPY --from=minit /minit /minit
 COPY --from=minit-demo /minit-demo /minit-demo
 
+ADD banner.txt /etc/banner.minit.txt
 ADD bin     /opt/bin
 ADD minit.d /etc/minit.d
 ADD templates /opt/templates
