@@ -40,6 +40,9 @@ ENV MINIT_MAIN_CHARSET  gbk
 
 ENV MINIT_DISABLE @demo-daemon-a,demo-daemon-b-2
 
+ENV MINIT_ENV_EXTRA_ENV_A '{{stringsToUpper "aaa"}}'
+ENV MINIT_ENV_EXTRA_ENV_C '{{stringsToUpper "ccc"}}'
+
 ENTRYPOINT [ "/minit" ]
 
 CMD ["demo-arg-main", "arg1", "arg2"]

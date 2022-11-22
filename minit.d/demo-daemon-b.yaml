@@ -13,5 +13,8 @@ group: demo-daemon-b
 count: 3
 charset: gbk
 shell: /bin/bash -eux
+env:
+  MINIT_ENV_EXTRA_ENV_B: '{{stringsToUpper "bbb"}}'
+  MINIT_ENV_EXTRA_ENV_C-: "none"
 command:
   - /minit-demo -gbk -name demo-daemon-b-2 $TZ
