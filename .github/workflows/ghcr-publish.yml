@@ -1,6 +1,7 @@
 name: ghcr-publish
 
 on:
+  workflow_dispatch: {}
   push:
     branches: ["main"]
     tags: ["v*.*.*"]
@@ -44,6 +45,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
+          pull: true
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

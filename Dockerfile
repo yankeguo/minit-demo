@@ -1,4 +1,4 @@
-FROM ghcr.io/guoyk93/minit:1.8.0-rc2 AS minit
+FROM ghcr.io/guoyk93/minit:latest AS minit
 
 FROM golang:1.19 AS minit-demo
 ENV CGO_ENABLED 0
