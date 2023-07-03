@@ -12,7 +12,7 @@ FROM alpine:3.16
 ENV LANG zh_CN.UTF-8
 ENV TZ Asia/Shanghai
 
-RUN sed -i "s/dl-cdn.alpinelinux.org/mirrors.tencent.com/g" /etc/apk/repositories && \
+RUN sed -i "s/dl-cdn.alpinelinux.org/mirrors.cloud.tencent.com/g" /etc/apk/repositories && \
     apk upgrade --no-cache && \
     apk add --no-cache bash coreutils tzdata ca-certificates && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
@@ -35,6 +35,7 @@ ENV MINIT_MAIN_DIR      /tmp
 ENV MINIT_MAIN_NAME     demo-env-main
 ENV MINIT_MAIN_GROUP    demo-main
 ENV MINIT_MAIN_KIND     cron
+ENV MINIT_MAIN_IMMEDIATE true
 ENV MINIT_MAIN_CRON     "@every 5s"
 ENV MINIT_MAIN_CHARSET  gbk
 
