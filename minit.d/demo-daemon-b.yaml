@@ -1,0 +1,20 @@
+kind: daemon
+name: demo-daemon-b-1
+group: demo-daemon-b
+env:
+  MINIT_ENV_EXTRA_ENV_B: '{{stringsToUpper "bbb"}}'
+  MINIT_ENV_EXTRA_ENV_C-: "none"
+command:
+  - /minit-demo
+  - -name
+  - demo-daemon-b-1
+  - $TZ
+---
+kind: daemon
+name: demo-daemon-b-2
+group: demo-daemon-b
+count: 3
+charset: gbk
+shell: /bin/bash -eux
+command:
+  - /minit-demo -gbk -name demo-daemon-b-2 $TZ

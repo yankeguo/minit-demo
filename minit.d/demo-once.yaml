@@ -1,0 +1,6 @@
+kind: once
+name: demo-once-gbk
+charset: gbk
+shell: /bin/bash
+command:
+  - echo -n W2RlbW8tb25jZS1iZ2tdINXiysfSu8z1suLK1CBHQks= | base64 -d

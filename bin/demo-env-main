@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec /minit-demo -name demo-env-main -gbk -once "$@"

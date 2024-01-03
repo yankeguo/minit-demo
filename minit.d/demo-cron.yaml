@@ -1,0 +1,13 @@
+kind: cron
+cron: "@every 10s"
+name: demo-cron-1
+command:
+  - echo
+  - aaaa
+---
+kind: cron
+cron: "@every 7s"
+name: demo-cron-2
+shell: /bin/bash
+command:
+  - echo bbbb $TZ
