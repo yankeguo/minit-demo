@@ -1,13 +1,13 @@
 FROM ghcr.io/yankeguo/minit:latest AS minit
 
-FROM golang:1.19 AS minit-demo
+FROM golang:1.21 AS minit-demo
 ENV CGO_ENABLED 0
 WORKDIR /go/src/app
 ADD . .
 RUN go build -o /minit-demo ./cmd/minit-demo
 
 
-FROM alpine:3.16
+FROM alpine:3.18
 
 ENV LANG zh_CN.UTF-8
 ENV TZ Asia/Shanghai
